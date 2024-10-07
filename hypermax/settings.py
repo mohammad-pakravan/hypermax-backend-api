@@ -45,11 +45,14 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_totp',  # Time-based OTP
     'django_otp.plugins.otp_static',  # For static OTP (if needed)
     "rest_framework_simplejwt",
+    'corsheaders',
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -58,6 +61,15 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'hypermax.urls'
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = [
+    'content-type',
+    'authorization',
+]
+CORS_EXPOSE_HEADERS = [
+    'Authorization',
+]
 
 TEMPLATES = [
     {
