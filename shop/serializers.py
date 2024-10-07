@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Category, SubCategory, Brand, Product
+from .models import Category, SubCategory, Brand, Product,CustomUser
 
 
 class SubCategorySerializer(serializers.ModelSerializer):
@@ -21,3 +21,10 @@ class ProductSerializer(serializers.ModelSerializer):
         model = Product
         fields = ['id', 'name', 'image', 'brand', 'subcategory', 'price', 'discount_percentage',
                   'description', 'barcode', 'is_promoted', 'in_storage_count']
+
+
+
+class CustomUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['first_name', 'last_name', 'address']

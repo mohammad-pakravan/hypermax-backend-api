@@ -40,7 +40,11 @@ INSTALLED_APPS = [
     'shop.apps.ShopConfig',
     'rest_framework',
     'django_filters',
-    'drf_yasg'
+    'drf_yasg',
+    'django_otp',
+    'django_otp.plugins.otp_totp',  # Time-based OTP
+    'django_otp.plugins.otp_static',  # For static OTP (if needed)
+    "rest_framework_simplejwt",
 ]
 
 MIDDLEWARE = [
@@ -79,6 +83,14 @@ REST_FRAMEWORK = {
         'django_filters.rest_framework.DjangoFilterBackend',
         'rest_framework.filters.SearchFilter',
     ],
+
+}
+# Token lifetimes and other settings can be customized here
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
 # Database
